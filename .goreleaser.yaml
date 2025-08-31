@@ -13,7 +13,7 @@ builds:
     # Can be a path (e.g. `bin/app`) to wrap the binary in a directory.
     #
     # Default: Project directory name.
-    binary: zig-out/lib/libazync.a
+    binary: azync
 
     # List of targets to be built, in Zig's format.
     # Default: [ "x86_64-linux", "x86_64-macos", "x86_64-windows", "aarch64-linux", "aarch64-macos" ]
@@ -66,4 +66,11 @@ builds:
 
     # If true, skip the build.
     # Useful for library projects.
-    skip: false
+    skip: true
+    
+archives:
+  - id: libazync
+    name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+    files:
+      - zig-out/lib/libazync.a
+      - include/azync.h
